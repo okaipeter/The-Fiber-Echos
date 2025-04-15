@@ -8,6 +8,7 @@ import Gallery from './pages/Gallery'
 import Events from './pages/Events'
 import Blog from './pages/Blog'
 import Contact from './pages/Contact'
+import ArtAndFashion from './pages/ArtAndFashion'
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
               <Route path="/events" element={<Events />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/art-and-fashion" element={<ArtAndFashion />} />
             </Routes>
           </AnimatePresence>
         </main>

@@ -12,6 +12,7 @@ type BlogPost = {
   image: string
   tags: string[]
   category: 'education' | 'tips' | 'knowledge'
+  link?: string  // Optional external link
 }
 
 const Blog = () => {
@@ -22,6 +23,35 @@ const Blog = () => {
   const blogPosts: BlogPost[] = [
     {
       id: 1,
+      title: 'Welcome to Fiber Echos',
+      excerpt: 'Where Fashion Meets Purpose - A movement born from the streets of Accra, transforming the fashion narrative through sustainable practices and community engagement.',
+      content: `Dear Fashion Revolutionaries,
+
+Remember the last time you stood before your overflowing closet, drowning in options, yet feeling like you had nothing to wear? Now imagine that same closet's contents multiplied by millions, piling up not in homes, but in massive landfills across Ghana and other parts of the Global South. This is not a story about fashion – it's about our future, our environment, and our power to create change.
+
+Welcome to Fiber Echos, where we're turning the fashion narrative on its head. We're a movement born from the streets of Accra, where the consequences of global overconsumption wash up on our shores daily. But instead of despair, we choose action. Instead of blame, we choose transformation.
+
+Every Sunday, something magical happens where fashion enthusiasts gather not to buy new, but to swap, share, and reshape their relationship with clothing. We call it Sustainable Sundays, and it's just the beginning of our journey together.
+
+Through this platform, you'll get an insider's view of:
+- How our community is revolutionizing fashion consumption, one swap at a time
+- Expert insights on sustainable fashion from a Global South perspective
+- Practical tips for building a conscious wardrobe
+- Behind-the-scenes looks at our events and initiatives
+- Stories of transformation from our growing community
+
+What makes us different? We're not preaching from a distance – we're living this revolution. Every piece we swap, every conversation we have, and every action we take is rooted in our direct experience with fashion's global impact. We're building a community that understands that style doesn't have to cost the Earth.
+
+Join us in this journey towards a more sustainable future, one garment at a time.`,
+      author: 'The Fiber Echos Team',
+      date: '2024-01-14',
+      image: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800&auto=format&fit=crop&q=60',
+      tags: ['sustainability', 'community', 'fashion revolution', 'welcome'],
+      category: 'education',
+      link: 'https://thefiberechos.substack.com/p/welcome-to-fiber-echos?r=4yus57&utm_campaign=post&utm_medium=web&fbclid=PAY2xjawJrLLxleHRuA2FlbQIxMQABp1-z-cOgeGRTof_tyEMqhaFgQyidMU4Wxs5e3vh27awI4Rg62eI-FQw4qNoH_aem_dvFEcwNeYxhg9vWH0JTnvA&triedRedirect=true'
+    },
+    {
+      id: 2,
       title: 'The True Cost of Fast Fashion',
       excerpt: 'Understanding the environmental and social impact of our clothing choices.',
       content: '...',
@@ -30,9 +60,10 @@ const Blog = () => {
       image: '/blog/fast-fashion.jpg',
       tags: ['sustainability', 'environment', 'fashion industry'],
       category: 'education',
+      link: 'https://thefiberechos.substack.com/p/the-true-cost-of-fast-fashion'
     },
     {
-      id: 2,
+      id: 3,
       title: '5 Tips for a Sustainable Wardrobe',
       excerpt: 'Practical steps to build a more sustainable and conscious wardrobe.',
       content: '...',
@@ -41,9 +72,10 @@ const Blog = () => {
       image: '/blog/wardrobe-tips.jpg',
       tags: ['tips', 'wardrobe', 'sustainable living'],
       category: 'tips',
+      link: 'https://thefiberechos.substack.com/p/5-tips-for-sustainable-wardrobe'
     },
     {
-      id: 3,
+      id: 4,
       title: 'Understanding Textile Recycling',
       excerpt: 'A comprehensive guide to textile recycling and its importance.',
       content: '...',
@@ -52,6 +84,7 @@ const Blog = () => {
       image: '/blog/textile-recycling.jpg',
       tags: ['recycling', 'textiles', 'education'],
       category: 'knowledge',
+      link: 'https://thefiberechos.substack.com/p/understanding-textile-recycling'
     },
     // Add more posts as needed
   ]
@@ -162,8 +195,12 @@ const Blog = () => {
                 <button
                   className="btn btn-secondary w-full"
                   onClick={() => {
-                    // In a real application, this would navigate to the full article
-                    alert('Full article view coming soon!')
+                    if (post.link) {
+                      window.open(post.link, '_blank', 'noopener,noreferrer')
+                    } else {
+                      // In a real application, this would navigate to the full article
+                      alert('Full article view coming soon!')
+                    }
                   }}
                 >
                   Read More

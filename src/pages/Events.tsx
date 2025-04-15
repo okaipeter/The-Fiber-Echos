@@ -50,15 +50,16 @@ const Events = () => {
     },
     {
       id: 3,
-      title: 'Sustainable Fashion Meetup',
-      date: '2024-05-05',
-      time: '3:00 PM - 6:00 PM',
+      title: 'Eco-Fashion Photography Workshop',
+      date: '2024-05-02',
+      time: '1:00 PM - 4:00 PM',
       location: 'The Fiber Echos Studio, Accra',
-      description: 'Network with like-minded individuals passionate about sustainable fashion. Share ideas and experiences.',
-      image: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800&auto=format&fit=crop&q=60',
-      type: 'swap',
-      capacity: 40,
-      price: 'Free'
+      description: 'Master the art of sustainable fashion photography. Learn styling, lighting, and composition techniques to showcase eco-friendly fashion.',
+      image: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?w=800&auto=format&fit=crop&q=60',
+      type: 'workshop',
+      capacity: 20,
+      price: 'GH₵180',
+      featured: true
     },
     {
       id: 4,
@@ -170,68 +171,125 @@ const Events = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="mb-16"
+            className="mb-12"
           >
-            <h2 className="text-2xl font-serif mb-8 text-center">Featured Events</h2>
-            <div className="grid md:grid-cols-2 gap-8">
+            <h2 className="text-2xl font-serif mb-6 text-center">Featured Events</h2>
+            <div className="grid md:grid-cols-3 gap-6">
               {events
                 .filter(event => event.featured)
-                .map(event => (
+                .map((event, index) => (
                   <motion.div
                     key={event.id}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    whileHover={{ y: -8 }}
-                    transition={{ duration: 0.4 }}
-                    className="bg-white rounded-xl shadow-xl overflow-hidden"
+                    initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    whileHover={{ 
+                      y: -8,
+                      boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+                    }}
+                    transition={{ 
+                      duration: 0.4,
+                      delay: index * 0.2,
+                      type: "spring",
+                      stiffness: 100
+                    }}
+                    className="bg-white rounded-lg shadow-lg overflow-hidden transform-gpu"
                   >
-                    <div className="relative h-64">
+                    <div className="relative h-48 overflow-hidden group">
                       <img
                         src={event.image}
                         alt={event.title}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110"
                       />
-                      <div className="absolute top-4 right-4 bg-earth-600 text-white px-4 py-2 rounded-full text-sm font-medium">
-                        Featured
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      <div className="absolute top-3 right-3">
+                        <motion.div
+                          initial={{ opacity: 0, scale: 0 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ delay: index * 0.2 + 0.3 }}
+                          className="bg-earth-600 text-white px-3 py-1 rounded-full text-xs font-medium"
+                        >
+                          Featured
+                        </motion.div>
                       </div>
                     </div>
-                    <div className="p-6">
-                      <h3 className="text-2xl font-serif mb-4">{event.title}</h3>
-                      <div className="space-y-3 mb-6">
+                    <div className="p-4">
+                      <motion.h3 
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: index * 0.2 + 0.4 }}
+                        className="text-xl font-serif mb-3"
+                      >
+                        {event.title}
+                      </motion.h3>
+                      <motion.div 
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: index * 0.2 + 0.5 }}
+                        className="space-y-2 mb-4 text-sm"
+                      >
                         <div className="flex items-center text-earth-700">
-                          <FaCalendarAlt className="mr-2" />
+                          <FaCalendarAlt className="mr-2 text-xs" />
                           <span>{formatDate(event.date)}</span>
                         </div>
                         <div className="flex items-center text-earth-700">
-                          <FaClock className="mr-2" />
+                          <FaClock className="mr-2 text-xs" />
                           <span>{event.time}</span>
                         </div>
                         <div className="flex items-center text-earth-700">
-                          <FaMapMarkerAlt className="mr-2" />
+                          <FaMapMarkerAlt className="mr-2 text-xs" />
                           <span>{event.location}</span>
                         </div>
-                      </div>
-                      <p className="text-earth-700 mb-6">{event.description}</p>
-                      <div className="flex items-center justify-between mb-6">
+                      </motion.div>
+                      <motion.p 
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: index * 0.2 + 0.6 }}
+                        className="text-earth-700 mb-4 text-sm line-clamp-2"
+                      >
+                        {event.description}
+                      </motion.p>
+                      <motion.div 
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: index * 0.2 + 0.7 }}
+                        className="flex items-center justify-between mb-4 text-sm"
+                      >
                         <div className="flex items-center text-earth-700">
-                          <FaUsers className="mr-2" />
-                          <span>{event.capacity} spots available</span>
+                          <FaUsers className="mr-2 text-xs" />
+                          <span>{event.capacity} spots</span>
                         </div>
                         <div className="text-earth-700 font-medium">
-                          <FaTicketAlt className="mr-2 inline" />
+                          <FaTicketAlt className="mr-1 inline text-xs" />
                           {event.price}
                         </div>
-                      </div>
-                      <button
-                        className="btn btn-primary w-full flex items-center justify-center gap-2 group"
+                      </motion.div>
+                      <motion.button
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: index * 0.2 + 0.8 }}
+                        whileHover={{ 
+                          scale: 1.02,
+                          boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)"
+                        }}
+                        whileTap={{ scale: 0.98 }}
+                        className="btn btn-primary w-full flex items-center justify-center gap-2 group py-2 text-sm transition-all duration-300"
                         onClick={() => {
-                          // In a real application, this would open an RSVP form
                           alert('RSVP functionality coming soon!')
                         }}
                       >
                         RSVP Now
-                        <FaHeart className="transform group-hover:scale-110 transition-transform" />
-                      </button>
+                        <motion.span
+                          animate={{ x: [0, 4, 0] }}
+                          transition={{ 
+                            duration: 1.5, 
+                            repeat: Infinity,
+                            repeatType: "reverse",
+                            ease: "easeInOut"
+                          }}
+                        >
+                          <FaHeart className="text-xs" />
+                        </motion.span>
+                      </motion.button>
                     </div>
                   </motion.div>
                 ))}
@@ -240,7 +298,7 @@ const Events = () => {
 
           {/* Regular Events Grid */}
           <AnimatePresence>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredEvents
                 .filter(event => !event.featured)
                 .map((event, index) => (
@@ -248,68 +306,49 @@ const Events = () => {
                     key={event.id}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -20 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    onHoverStart={() => setHoveredEvent(event.id)}
-                    onHoverEnd={() => setHoveredEvent(null)}
-                    className="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:shadow-xl"
+                    transition={{ duration: 0.4, delay: index * 0.1 }}
+                    whileHover={{ y: -8 }}
+                    className="bg-white rounded-lg shadow-lg overflow-hidden"
                   >
-                    <div className="relative h-48">
+                    <div className="relative h-40">
                       <img
                         src={event.image}
                         alt={event.title}
                         className="w-full h-full object-cover"
                       />
-                      <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: hoveredEvent === event.id ? 1 : 0 }}
-                        className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center"
-                      >
-                        <span className="text-white text-lg font-medium">View Details</span>
-                      </motion.div>
-                    </div>
-                    <div className="p-6">
-                      <div className="mb-4">
-                        <span className={`inline-block px-3 py-1 rounded-full text-sm font-medium ${
-                          event.type === 'swap' ? 'bg-green-100 text-green-800' : 'bg-blue-100 text-blue-800'
-                        }`}>
-                          {event.type === 'swap' ? 'Swap Event' : 'Workshop'}
-                        </span>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                      <div className="absolute bottom-3 left-3 right-3">
+                        <h3 className="text-lg font-serif text-white">{event.title}</h3>
                       </div>
-                      <h3 className="text-xl font-serif mb-4">{event.title}</h3>
-                      <div className="space-y-3 mb-6">
+                    </div>
+                    <div className="p-4">
+                      <div className="space-y-2 mb-3 text-sm">
                         <div className="flex items-center text-earth-700">
-                          <FaCalendarAlt className="mr-2" />
+                          <FaCalendarAlt className="mr-2 text-xs" />
                           <span>{formatDate(event.date)}</span>
                         </div>
                         <div className="flex items-center text-earth-700">
-                          <FaClock className="mr-2" />
+                          <FaClock className="mr-2 text-xs" />
                           <span>{event.time}</span>
                         </div>
-                        <div className="flex items-center text-earth-700">
-                          <FaMapMarkerAlt className="mr-2" />
-                          <span>{event.location}</span>
-                        </div>
                       </div>
-                      <div className="flex items-center justify-between mb-6">
-                        <div className="flex items-center text-earth-700">
-                          <FaUsers className="mr-2" />
-                          <span>{event.capacity} spots</span>
-                        </div>
+                      <p className="text-earth-700 mb-3 text-sm line-clamp-2">{event.description}</p>
+                      <div className="flex items-center justify-between text-sm">
                         <div className="text-earth-700 font-medium">
-                          <FaTicketAlt className="mr-2 inline" />
+                          <FaTicketAlt className="mr-1 inline text-xs" />
                           {event.price}
                         </div>
+                        <button
+                          className="btn btn-primary px-4 py-1.5 text-sm flex items-center gap-1.5 group"
+                          onClick={() => {
+                            // In a real application, this would open an RSVP form
+                            alert('RSVP functionality coming soon!')
+                          }}
+                        >
+                          RSVP
+                          <FaHeart className="transform group-hover:scale-110 transition-transform text-xs" />
+                        </button>
                       </div>
-                      <button
-                        className="btn btn-secondary w-full flex items-center justify-center gap-2 group"
-                        onClick={() => {
-                          alert('RSVP functionality coming soon!')
-                        }}
-                      >
-                        RSVP Now
-                        <FaHeart className="transform group-hover:scale-110 transition-transform" />
-                      </button>
                     </div>
                   </motion.div>
                 ))}

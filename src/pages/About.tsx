@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { FaLeaf, FaRecycle, FaUsers, FaHandHoldingHeart, FaGlobe, FaSeedling } from 'react-icons/fa'
+import { FaLeaf, FaRecycle, FaUsers, FaHandHoldingHeart, FaGlobe, FaSeedling, FaInstagram, FaFacebook, FaTiktok } from 'react-icons/fa'
 
 const About = () => {
   const stats = [
@@ -218,51 +218,86 @@ const About = () => {
             viewport={{ once: true }}
             className="max-w-3xl mx-auto text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-serif mb-6">Our Team</h2>
+            <h2 className="text-3xl md:text-4xl font-serif mb-6">Meet Our Founder</h2>
             <p className="text-lg text-earth-700">
-              Meet the passionate individuals driving our mission forward. Our team brings together expertise in fashion, sustainability, and community building.
+              The visionary behind The Fiber Echos, leading our mission to transform fashion through sustainability.
             </p>
           </motion.div>
-          <div className="grid md:grid-cols-3 gap-8">
-            {[1, 2, 3].map((_, index) => (
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="relative"
+            >
               <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.2 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -8 }}
-                className="bg-white rounded-xl shadow-lg overflow-hidden"
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.3 }}
+                className="relative h-96 rounded-xl overflow-hidden shadow-xl"
               >
-                <div className="relative h-64">
-                  <img
-                    src={`https://images.unsplash.com/photo-${[
-                      '1534528741775-53994a69daeb',
-                      '1539571696357-5a69c17a67c6',
-                      '1517841905240-472988babdf9'
-                    ][index]}?w=400&auto=format&fit=crop&q=60`}
-                    alt="Team member"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="p-6 text-center">
-                  <h3 className="text-xl font-serif mb-2">
-                    {[
-                      'Sarah Johnson',
-                      'David Chen',
-                      'Maria Rodriguez'
-                    ][index]}
-                  </h3>
-                  <p className="text-earth-600 mb-4">
-                    {[
-                      'Founder & Creative Director',
-                      'Sustainability Lead',
-                      'Community Manager'
-                    ][index]}
-                  </p>
-                </div>
+                <img
+                  src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800&auto=format&fit=crop&q=60"
+                  alt="Lauren Goodwin"
+                  className="w-full h-full object-cover"
+                />
               </motion.div>
-            ))}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                viewport={{ once: true }}
+                className="absolute -bottom-4 -right-4 bg-earth-600 text-white p-6 rounded-lg shadow-lg"
+              >
+                <FaLeaf className="text-3xl" />
+              </motion.div>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="text-2xl font-serif mb-4">Lauren Goodwin</h3>
+              <p className="text-earth-700 mb-6">
+                With over a decade of experience in sustainable fashion and community organizing, Lauren founded The Fiber Echos in 2020 with a vision to create meaningful change in the fashion industry. Her background in textile design and environmental activism has shaped her approach to sustainable fashion, focusing on both the creative and practical aspects of clothing sustainability.
+              </p>
+              <p className="text-earth-700 mb-8">
+                Lauren's work has been featured in numerous publications, and she regularly speaks at sustainability conferences and events across Africa and beyond. She is passionate about creating a circular fashion economy and empowering communities through sustainable practices.
+              </p>
+              <div className="flex items-center gap-4">
+                <motion.a
+                  href="https://instagram.com/laurengoodwin"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  className="text-2xl text-earth-700 hover:text-earth-900 transition-colors"
+                >
+                  <FaInstagram />
+                </motion.a>
+                <motion.a
+                  href="https://facebook.com/laurengoodwin"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  className="text-2xl text-earth-700 hover:text-earth-900 transition-colors"
+                >
+                  <FaFacebook />
+                </motion.a>
+                <motion.a
+                  href="https://tiktok.com/@laurengoodwin"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  className="text-2xl text-earth-700 hover:text-earth-900 transition-colors"
+                >
+                  <FaTiktok />
+                </motion.a>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>

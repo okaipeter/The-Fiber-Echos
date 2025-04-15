@@ -170,25 +170,150 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Newsletter Section */}
+      {/* Art Expression Section */}
       <section className="section-padding bg-earth-100">
         <div className="container-custom">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-5xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="bg-white rounded-2xl shadow-xl p-8 md:p-12"
+              className="bg-white rounded-2xl shadow-xl p-6 md:p-8 mb-12 relative"
             >
-              <div className="grid md:grid-cols-2 gap-8 items-center">
-                <div>
+              <h1 className="text-4xl md:text-6xl font-serif mb-4 leading-tight text-center">
+                The Art of{' '}
+                <span className="relative inline-block">
+                  Human Expression
+                  <motion.img
+                    src="/images/statue-icon.png"
+                    alt="Statue icon"
+                    className="absolute -right-10 top-1/2 transform -translate-y-1/2 w-8 h-auto"
+                    initial={{ rotate: -10 }}
+                    animate={{ rotate: 10 }}
+                    transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
+                  />
+                </span>
+                , Uncover
+              </h1>
+              <h2 className="text-3xl md:text-5xl font-serif mb-6 text-center">
+                The{' '}
+                <span className="italic font-serif">Stories</span>{' '}
+                Behind the Art
+                <motion.img
+                  src="/images/face-sculpture.png"
+                  alt="Face sculpture"
+                  className="inline-block ml-4 w-12 h-auto align-middle"
+                  initial={{ opacity: 0.8 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
+                />
+              </h2>
+              <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto mb-8 text-center">
+                Discover new favorites among our diverse exhibitions, Uncover the
+                stories and inspirations behind the art
+              </p>
+              <div className="flex justify-center">
+                <Link to="/art-and-fashion">
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="bg-earth-800 text-white px-6 py-2.5 rounded-full text-base font-medium hover:bg-earth-900 transition-colors duration-300"
+                  >
+                    Explore
+                  </motion.button>
+                </Link>
+              </div>
+            </motion.div>
+
+            {/* Image Gallery Preview */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              viewport={{ once: true }}
+              className="grid grid-cols-1 md:grid-cols-3 gap-6"
+            >
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                viewport={{ once: true }}
+                className="relative group"
+              >
+                <div className="overflow-hidden rounded-xl shadow-lg">
+                  <img
+                    src="https://images.unsplash.com/photo-1581088584496-44ca2f3e49e8?w=800&auto=format&fit=crop&q=60"
+                    alt="Sustainable Fashion Design"
+                    className="w-full h-[320px] object-cover transform group-hover:scale-110 transition-transform duration-500"
+                  />
+                </div>
+                <div className="absolute inset-0 bg-black bg-opacity-20 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                  <span className="text-white text-lg font-medium">Sustainable Design</span>
+                </div>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+                viewport={{ once: true }}
+                className="relative group md:mt-8"
+              >
+                <div className="overflow-hidden rounded-xl shadow-lg">
+                  <img
+                    src="https://images.unsplash.com/photo-1605518216938-7c31b7b14ad0?w=800&auto=format&fit=crop&q=60"
+                    alt="Textile Craftsmanship"
+                    className="w-full h-[320px] object-cover transform group-hover:scale-110 transition-transform duration-500"
+                  />
+                </div>
+                <div className="absolute inset-0 bg-black bg-opacity-20 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                  <span className="text-white text-lg font-medium">Textile Craftsmanship</span>
+                </div>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.8 }}
+                viewport={{ once: true }}
+                className="relative group"
+              >
+                <div className="overflow-hidden rounded-xl shadow-lg">
+                  <img
+                    src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&auto=format&fit=crop&q=60"
+                    alt="Fashion Art"
+                    className="w-full h-[320px] object-cover transform group-hover:scale-110 transition-transform duration-500"
+                  />
+                </div>
+                <div className="absolute inset-0 bg-black bg-opacity-20 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                  <span className="text-white text-lg font-medium">Fashion Art</span>
+                </div>
+              </motion.div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Newsletter Section */}
+      <section className="section-padding bg-earth-100">
+        <div className="container-custom">
+          <div className="max-w-6xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="bg-white rounded-2xl shadow-xl p-6 md:p-10"
+            >
+              <div className="grid md:grid-cols-2 gap-10 items-center">
+                <div className="md:pl-4">
                   <motion.h2
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.2 }}
                     viewport={{ once: true }}
-                    className="text-3xl md:text-4xl font-serif mb-4"
+                    className="text-3xl md:text-4xl font-serif mb-6"
                   >
                     Stay Connected
                   </motion.h2>
@@ -197,11 +322,11 @@ const Home = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.4 }}
                     viewport={{ once: true }}
-                    className="text-earth-700 mb-6"
+                    className="text-earth-700 mb-8 text-lg"
                   >
                     Subscribe to our newsletter for updates on events, sustainability tips, and community stories.
                   </motion.p>
-                  <form onSubmit={handleSubscribe} className="space-y-4">
+                  <form onSubmit={handleSubscribe} className="space-y-6">
                     <motion.div
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
@@ -215,7 +340,7 @@ const Home = () => {
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="Enter your email"
                         required
-                        className="w-full px-4 py-3 rounded-lg border border-earth-200 focus:outline-none focus:ring-2 focus:ring-earth-500 transition-all duration-300"
+                        className="w-full px-5 py-3.5 rounded-lg border border-earth-200 focus:outline-none focus:ring-2 focus:ring-earth-500 transition-all duration-300 text-lg"
                       />
                     </motion.div>
                     <motion.button
@@ -226,17 +351,17 @@ const Home = () => {
                       transition={{ duration: 0.8, delay: 0.8 }}
                       viewport={{ once: true }}
                       type="submit"
-                      className="btn btn-primary w-full flex items-center justify-center gap-2 group"
+                      className="btn btn-primary w-full flex items-center justify-center gap-3 group py-3.5 text-lg"
                     >
                       Subscribe Now
-                      <FaPaperPlane className="transform group-hover:translate-x-1 transition-transform" />
+                      <FaPaperPlane className="transform group-hover:translate-x-1 transition-transform text-lg" />
                     </motion.button>
                   </form>
                   {subscribeStatus === 'success' && (
                     <motion.p
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
-                      className="text-green-600 mt-4"
+                      className="text-green-600 mt-6 text-lg"
                     >
                       Thank you for subscribing! 🌿
                     </motion.p>
@@ -247,19 +372,19 @@ const Home = () => {
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.8 }}
                   viewport={{ once: true }}
-                  className="relative h-64 md:h-full"
+                  className="relative h-[400px]"
                 >
                   <img
                     src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=800&auto=format&fit=crop&q=60"
                     alt="Sustainable fashion newsletter"
-                    className="w-full h-full object-cover rounded-lg"
+                    className="w-full h-full object-cover rounded-2xl shadow-xl"
                   />
                   <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.8, delay: 0.4 }}
                     viewport={{ once: true }}
-                    className="absolute -bottom-4 -right-4 bg-earth-600 text-white p-4 rounded-lg shadow-lg"
+                    className="absolute -bottom-4 -right-4 bg-earth-600 text-white p-5 rounded-2xl shadow-xl"
                   >
                     <FaLeaf className="text-2xl" />
                   </motion.div>

@@ -31,7 +31,7 @@ const Gallery = () => {
     {
       id: 2,
       type: 'video',
-      src: 'https://www.youtube.com/embed/example1',
+      src: '/videos/textile-workshop.mp4',
       title: 'Textile Recycling Workshop',
       category: 'workshops',
       description: 'Learn the art of textile recycling and upcycling in our hands-on workshop.',
@@ -67,7 +67,7 @@ const Gallery = () => {
     {
       id: 6,
       type: 'video',
-      src: 'https://www.youtube.com/embed/example2',
+      src: '/videos/fashion-panel.mp4',
       title: 'Sustainable Fashion Panel',
       category: 'events',
       description: 'Industry experts discuss the future of sustainable fashion in Africa.',
@@ -90,6 +90,87 @@ const Gallery = () => {
       category: 'events',
       description: 'Collaborative art installation using recycled textiles.',
       tags: ['art', 'community', 'installation']
+    },
+    {
+      id: 9,
+      type: 'image',
+      src: 'https://images.unsplash.com/photo-1581784368651-8916092072fc?w=800&auto=format&fit=crop&q=60',
+      title: 'Sustainable Fashion Workshop',
+      category: 'workshops',
+      description: 'Local designers sharing sustainable fashion techniques with the community.',
+      tags: ['workshop', 'design', 'education']
+    },
+    {
+      id: 10,
+      type: 'image',
+      src: 'https://images.unsplash.com/photo-1523381294911-8d3cead13475?w=800&auto=format&fit=crop&q=60',
+      title: 'Textile Dying Process',
+      category: 'workshops',
+      description: 'Traditional textile dying techniques using natural materials.',
+      tags: ['crafts', 'traditional', 'dyeing']
+    },
+    {
+      id: 11,
+      type: 'image',
+      src: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&auto=format&fit=crop&q=60',
+      title: 'Sustainable Collection',
+      category: 'designs',
+      description: 'Showcasing our latest sustainable fashion collection.',
+      tags: ['fashion', 'collection', 'sustainable']
+    },
+    {
+      id: 12,
+      type: 'image',
+      src: 'https://images.unsplash.com/photo-1576995853123-5a10305d93c0?w=800&auto=format&fit=crop&q=60',
+      title: 'Fabric Upcycling',
+      category: 'workshops',
+      description: 'Creative upcycling workshop turning old fabrics into new treasures.',
+      tags: ['upcycling', 'creativity', 'workshop']
+    },
+    {
+      id: 13,
+      type: 'image',
+      src: 'https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=800&auto=format&fit=crop&q=60',
+      title: 'Fashion Revolution Day',
+      category: 'events',
+      description: 'Community gathering to celebrate sustainable fashion and ethical practices.',
+      tags: ['event', 'community', 'revolution']
+    },
+    {
+      id: 14,
+      type: 'image',
+      src: 'https://images.unsplash.com/photo-1605289355680-75fb41239154?w=800&auto=format&fit=crop&q=60',
+      title: 'Textile Weaving Demo',
+      category: 'workshops',
+      description: 'Traditional weaving techniques demonstration by local artisans.',
+      tags: ['weaving', 'traditional', 'artisan']
+    },
+    {
+      id: 15,
+      type: 'image',
+      src: 'https://images.unsplash.com/photo-1595341888016-a392ef81b7de?w=800&auto=format&fit=crop&q=60',
+      title: 'Sustainable Style Exhibition',
+      category: 'events',
+      description: 'Exhibition showcasing sustainable fashion innovations and local designers.',
+      tags: ['exhibition', 'innovation', 'design']
+    },
+    {
+      id: 16,
+      type: 'video',
+      src: '/videos/design-workshop.mp4',
+      title: 'Sustainable Design Workshop',
+      category: 'workshops',
+      description: 'An in-depth workshop on sustainable fashion design principles and eco-friendly pattern making.',
+      tags: ['workshop', 'design', 'sustainability', 'education']
+    },
+    {
+      id: 17,
+      type: 'video',
+      src: '/videos/fashion-show.mp4',
+      title: 'Eco Fashion Show 2024',
+      category: 'events',
+      description: 'Highlights from our annual sustainable fashion show featuring local designers and upcycled collections.',
+      tags: ['fashion show', 'event', 'runway', 'sustainable fashion']
     }
   ]
 
@@ -182,15 +263,19 @@ const Gallery = () => {
                     />
                   ) : (
                     <div className="relative aspect-video rounded-lg overflow-hidden shadow-lg">
-                      <iframe
-                        src={item.src}
-                        title={item.title}
-                        className="w-full h-full"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                      />
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <FaPlay className="text-white text-4xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      <video
+                        className="w-full h-full object-cover"
+                        poster={`/video-thumbnails/${item.id}.jpg`}
+                        onClick={(e) => {
+                          e.preventDefault()
+                          setSelectedItem(item)
+                        }}
+                      >
+                        <source src={item.src} type="video/mp4" />
+                        Your browser does not support the video tag.
+                      </video>
+                      <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30">
+                        <FaPlay className="text-white text-4xl opacity-100 group-hover:scale-110 transition-transform duration-300" />
                       </div>
                     </div>
                   )}
@@ -248,12 +333,14 @@ const Gallery = () => {
                     />
                   ) : (
                     <div className="relative aspect-video">
-                      <iframe
-                        src={selectedItem.src}
-                        title={selectedItem.title}
+                      <video
                         className="w-full h-full rounded-lg"
-                        allowFullScreen
-                      />
+                        controls
+                        autoPlay
+                      >
+                        <source src={selectedItem.src} type="video/mp4" />
+                        Your browser does not support the video tag.
+                      </video>
                     </div>
                   )}
                   <motion.button
